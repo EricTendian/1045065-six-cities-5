@@ -1,10 +1,13 @@
 import React from "react";
 import Main from "./main";
+import PropTypes from "prop-types";
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <Main placesCount={312} />
-    );
-  }
-}
+const App = (props) => {
+  return <Main placesCount={props.placesCount} />;
+};
+
+App.propTypes = {
+  placesCount: PropTypes.number.isRequired
+};
+
+export default App;
