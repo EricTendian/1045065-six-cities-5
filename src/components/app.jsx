@@ -12,13 +12,13 @@ const App = (props) => {
       <Route exact path="/">
         <Main placesCount={props.placesCount} />
       </Route>
-      <Route path="/login">
+      <Route exact path="/login">
         <Login />
       </Route>
-      <Route path="/favorites">
+      <Route exact path="/favorites">
         <Favorites />
       </Route>
-      <Route path="/offer/:id?">
+      <Route exact path="/offer/:id?">
         <Property />
       </Route>
     </Switch>
