@@ -1,14 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import offerPropType from "../types/offer";
 
 const OfferCard = (props) => {
   const offer = props.offer;
 
   return <article className="cities__place-card place-card" onMouseOver={props.onHover}>
-    <div className="place-card__mark">
+    {offer.mark && <div className="place-card__mark">
       <span>{offer.mark}</span>
-    </div>
+    </div>}
     <div className="cities__image-wrapper place-card__image-wrapper">
       <Link to={`/offer/${offer.id}`}>
         <img className="place-card__image" src={offer.photos[0].src} width="260" height="200" alt={offer.photos[0].title} />
@@ -42,7 +43,7 @@ const OfferCard = (props) => {
 };
 
 OfferCard.propTypes = {
-  offer: PropTypes.object.isRequired,
+  offer: offerPropType,
   onHover: PropTypes.func.isRequired
 };
 

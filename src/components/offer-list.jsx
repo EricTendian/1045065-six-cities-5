@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import OfferCard from "./offer-card";
+import offerPropType from "../types/offer";
 
 const OfferList = (props) => {
   return <div className="cities__places-list places__list tabs__content">
@@ -11,7 +12,7 @@ const OfferList = (props) => {
 };
 
 OfferList.propTypes = {
-  offers: PropTypes.array.isRequired
+  offers: PropTypes.arrayOf(offerPropType).isRequired
 };
 
 export default OfferList;

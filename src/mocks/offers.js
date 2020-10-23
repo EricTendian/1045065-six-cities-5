@@ -1,57 +1,48 @@
-export default [{
-  city: `Amsterdam`,
-  id: 1,
-  mark: `Premium`,
-  photos: [{
-    src: `https://baconmockup.com/400/400/`,
-    title: `alt text 1`
-  }, {
-    src: `https://baconmockup.com/400/401/`,
-    title: `alt text 2`
-  }, {
-    src: `https://baconmockup.com/300/300/`,
-    title: `alt text 3`
-  }, {
-    src: `https://baconmockup.com/300/301/`,
-    title: `alt text 4`
-  }, {
-    src: `https://baconmockup.com/300/299/`,
-    title: `alt text 5`
-  }, {
-    src: `https://baconmockup.com/300/298/`,
-    title: `alt text 6`
-  }],
-  type: `Private room`,
-  bedrooms: 1,
-  adults: 1,
-  price: 123,
-  rating: 4.5,
-  inside: [
-    `Wi-Fi`,
-    `Washing machine`,
-    `Towels`,
-    `Heating`,
-    `Coffee machine`,
-    `Baby seat`,
-    `Kitchen`,
-    `Dishwasher`,
-    `Cable TV`,
-    `Fridge`
-  ],
-  host: {
-    name: `test user`,
-    avatar: `https://baconmockup.com/128/129/`,
-    super: true
-  },
-  name: `this is a title`,
-  description: `this is a description`,
-  reviews: [{
-    time: `2020-05-01`,
-    rating: 5,
-    user: {
-      name: `test user2`,
-      avatar: `https://baconmockup.com/128/128/`
+import faker from "faker";
+
+const generate = (items, callback) => {
+  return new Array(items).fill(null).map(callback);
+};
+
+let offers = generate(4, () => {
+  return {
+    city: `Amsterdam`,
+    mark: faker.random.arrayElement([`Premium`, ``]),
+    photos: generate(6, () => {
+      return {
+        src: faker.image.city(300, 300, true),
+        title: faker.random.words(3)
+      };
+    }),
+    type: faker.random.arrayElement([`Private room`, `Apartment`, `House`, `Hotel`]),
+    bedrooms: faker.random.number({min: 1, max: 4}),
+    adults: faker.random.number({min: 1, max: 8}),
+    price: faker.random.number({min: 50, max: 500}),
+    rating: faker.random.number({min: 1, max: 5}),
+    inside: generate(10, () => faker.commerce.productName()),
+    host: {
+      name: faker.name.findName(),
+      avatar: faker.image.avatar(),
+      super: faker.random.boolean()
     },
-    text: `good place`
-  }]
-}];
+    name: faker.commerce.productAdjective() + ` ` + faker.address.streetName(),
+    description: faker.lorem.paragraph(),
+    reviews: generate(faker.random.number({min: 0, max: 10}), () => {
+      return {
+        time: faker.date.past().toDateString(),
+        rating: faker.random.number({min: 1, max: 5}),
+        user: {
+          name: faker.name.findName(),
+          avatar: faker.image.avatar()
+        },
+        text: faker.lorem.paragraph()
+      };
+    })
+  };
+});
+
+offers.map((element, index) => {
+  element.id = index + 1;
+});
+
+export default offers;

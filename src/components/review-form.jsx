@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
+import offerPropType from "../types/offer";
 
 class ReviewForm extends PureComponent {
   constructor(props) {
@@ -78,7 +78,7 @@ class ReviewForm extends PureComponent {
 }
 
 ReviewForm.propTypes = {
-  offer: PropTypes.object.isRequired
+  offer: offerPropType
 };
 
 export default ReviewForm;

@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
+import offerPropType from "../types/offer";
 import OfferList from "./offer-list";
 
 const Main = (props) => {
@@ -107,7 +108,7 @@ const Main = (props) => {
 
 Main.propTypes = {
   placesCount: PropTypes.number.isRequired,
-  offers: PropTypes.array.isRequired
+  offers: PropTypes.arrayOf(offerPropType).isRequired
 };
 
 export default Main;

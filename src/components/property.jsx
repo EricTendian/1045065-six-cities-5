@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import offerPropType from "../types/offer";
 import ReviewForm from "./review-form";
 
 const Property = (props) => {
@@ -42,9 +42,9 @@ const Property = (props) => {
         </div>
         <div className="property__container container">
           <div className="property__wrapper">
-            <div className="property__mark">
+            {offer.mark && <div className="property__mark">
               <span>{offer.mark}</span>
-            </div>
+            </div>}
             <div className="property__name-wrapper">
               <h1 className="property__name">
                 {offer.name}
@@ -103,7 +103,7 @@ const Property = (props) => {
               </div>
             </div>
             <section className="property__reviews reviews">
-              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
+              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{offer.reviews.length}</span></h2>
               <ul className="reviews__list">
                 {offer.reviews.map((review, index) => {
                   return <li className="reviews__item" key={index}>
@@ -248,7 +248,7 @@ const Property = (props) => {
 };
 
 Property.propTypes = {
-  offer: PropTypes.object.isRequired
+  offer: offerPropType
 };
 
 export default Property;
