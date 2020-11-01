@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app";
 
-const placesCount = 312;
+import offers from "./mocks/offers";
 
 ReactDOM.render(
-    <App placesCount={placesCount} />,
+    <App offers={offers} />,
     document.getElementById(`root`)
 );

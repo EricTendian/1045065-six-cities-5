@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "0.19",
+    "faker": "^5.1.0",
     "history": "4.10",
     "prop-types": "15.7",
     "react": "16.12",
