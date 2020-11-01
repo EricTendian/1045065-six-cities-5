@@ -21,7 +21,7 @@ const Offer = (props) => {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <Link to={`/`} className="header__logo-link">
+              <Link to="/" className="header__logo-link">
                 <img className="header__logo" src="/img/logo.svg" alt="6 cities logo" width="81" height="41" />
               </Link>
             </div>
@@ -91,7 +91,7 @@ const Offer = (props) => {
         </div>
       </main>
       <footer className="footer container">
-        <Link to={`/`} className="footer__logo-link">
+        <Link to="/" className="footer__logo-link">
           <img className="footer__logo" src="/img/logo.svg" alt="6 cities logo" width="64" height="33" />
         </Link>
       </footer>
@@ -107,7 +107,7 @@ const App = (props) => {
   return <BrowserRouter>
     <Switch>
       <Route exact path="/">
-        <Main placesCount={props.placesCount} offers={props.offers} />
+        <Main offers={props.offers} />
       </Route>
       <Route exact path="/login">
         <Login />
@@ -123,7 +123,6 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  placesCount: PropTypes.number.isRequired,
   offers: PropTypes.arrayOf(offerPropType).isRequired
 };
 

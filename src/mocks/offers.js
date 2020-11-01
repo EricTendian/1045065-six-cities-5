@@ -4,8 +4,9 @@ const generate = (items, callback) => {
   return new Array(items).fill(null).map(callback);
 };
 
-let offers = generate(4, () => {
+let offers = generate(4, (elem, index) => {
   return {
+    id: index + 1,
     city: `Amsterdam`,
     mark: faker.random.arrayElement([`Premium`, ``]),
     photos: generate(6, () => {
@@ -39,10 +40,6 @@ let offers = generate(4, () => {
       };
     })
   };
-});
-
-offers.map((element, index) => {
-  element.id = index + 1;
 });
 
 export default offers;

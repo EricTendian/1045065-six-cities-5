@@ -1,15 +1,26 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import OfferCard from "./offer-card";
 import offerPropType from "../types/offer";
 
-const OfferList = (props) => {
-  return <div className="cities__places-list places__list tabs__content">
-    {props.offers.map((offer, index) => {
-      return <OfferCard key={index} offer={offer} onHover={() => true} />;
-    })}
-  </div>;
-};
+class OfferList extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeOffer: null
+    };
+  }
+
+  render() {
+    return <div className="cities__places-list places__list tabs__content">
+      {this.props.offers.map((offer) => {
+        return <OfferCard key={offer.id} offer={offer}
+          onHover={(event) => this.setState({activeOffer: event.type === `mouseenter` ? offer : null})}/>;
+      })}
+    </div>;
+  }
+}
 
 OfferList.propTypes = {
   offers: PropTypes.arrayOf(offerPropType).isRequired

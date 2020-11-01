@@ -10,14 +10,14 @@ const Property = (props) => {
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <Link to={`/`} className="header__logo-link">
+            <Link to="/" className="header__logo-link">
               <img className="header__logo" src="/img/logo.svg" alt="6 cities logo" width="81" height="41" />
             </Link>
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <Link to={`/favorites`} className="header__nav-link header__nav-link--profile">
+                <Link to="/favorites" className="header__nav-link header__nav-link--profile">
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
                   <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
@@ -35,7 +35,7 @@ const Property = (props) => {
           <div className="property__gallery">
             {offer.photos.map((photo, index) => {
               return <div className="property__image-wrapper" key={index}>
-                <img className="property__image" src={photo.src} alt={photo.title} />
+                <img className="property__image" src={photo.src} title={photo.title} alt="Photo studio" />
               </div>;
             })}
           </div>
