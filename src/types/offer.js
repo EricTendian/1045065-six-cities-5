@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import reviewPropType from "./review";
 
 export default PropTypes.shape({
   city: PropTypes.string.isRequired,
@@ -24,15 +25,5 @@ export default PropTypes.shape({
   }),
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  reviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        time: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-        user: PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          avatar: PropTypes.string.isRequired
-        }),
-        text: PropTypes.string.isRequired
-      })
-  ).isRequired
+  reviews: PropTypes.arrayOf(reviewPropType).isRequired
 }).isRequired;

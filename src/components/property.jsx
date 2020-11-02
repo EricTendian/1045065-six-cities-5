@@ -1,7 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import offerPropType from "../types/offer";
-import ReviewForm from "./review-form";
+import Map from "./map";
+import ReviewList from "./review-list";
 
 const Property = (props) => {
   const {offer} = props;
@@ -102,44 +103,12 @@ const Property = (props) => {
                 {offer.description}
               </div>
             </div>
-            <section className="property__reviews reviews">
-              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{offer.reviews.length}</span></h2>
-              <ul className="reviews__list">
-                {offer.reviews.map((review, index) => {
-                  return <li className="reviews__item" key={index}>
-                    <div className="reviews__user user">
-                      <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img className="reviews__avatar user__avatar" src={review.user.avatar} width="54" height="54" alt="Reviews avatar" />
-                      </div>
-                      <span className="reviews__user-name">
-                        {review.user.name}
-                      </span>
-                    </div>
-                    <div className="reviews__info">
-                      <div className="reviews__rating rating">
-                        <div className="reviews__stars rating__stars">
-                          <span style={{width: review.rating * 20 + `%`}} />
-                          <span className="visually-hidden">Rating</span>
-                        </div>
-                      </div>
-                      <p className="reviews__text">
-                        {review.text}
-                      </p>
-                      <time className="reviews__time" dateTime={review.time}>
-                        {new Intl.DateTimeFormat(`en-US`, {
-                          year: `numeric`,
-                          month: `long`
-                        }).format(new Date(review.time))}
-                      </time>
-                    </div>
-                  </li>;
-                })}
-              </ul>
-              <ReviewForm offer={offer} />
-            </section>
+            <ReviewList offer={offer} />
           </div>
         </div>
-        <section className="property__map map"/>
+        <section className="property__map map">
+          <Map offers={[props.offer]} />
+        </section>
       </section>
       <div className="container">
         <section className="near-places places">
