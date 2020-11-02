@@ -14,7 +14,7 @@ const Offer = (props) => {
   const offerResults = props.offers.filter((offer) => offer.id === id);
 
   if (offerResults.length === 1) {
-    return <Property offer={offerResults[0]} />;
+    return <Property offer={offerResults[0]} nearbyOffers={props.offers.slice(0, 3)} />;
   } else {
     // 404 page
     return <Property404 />;

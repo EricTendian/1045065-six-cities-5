@@ -96,7 +96,7 @@ const Main = (props) => {
               </select>*/}
 
             </form>
-            <OfferList offers={props.offers} />
+            <OfferList offers={props.offers} listClassPrefix="cities__places-list" cardClassPrefix="cities__place-card" />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map">

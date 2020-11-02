@@ -6,11 +6,13 @@ import offerPropType from "../types/offer";
 const OfferCard = (props) => {
   const offer = props.offer;
 
-  return <article className="cities__place-card place-card" onMouseEnter={props.onHover} onMouseLeave={props.onHover}>
+  const classPrefix = props.classPrefix;
+
+  return <article className={`${classPrefix} place-card`} onMouseEnter={props.onHover} onMouseLeave={props.onHover}>
     {offer.mark && <div className="place-card__mark">
       <span>{offer.mark}</span>
     </div>}
-    <div className="cities__image-wrapper place-card__image-wrapper">
+    <div className={`${classPrefix}__image-wrapper place-card__image-wrapper`}>
       <Link to={`/offer/${offer.id}`}>
         <img className="place-card__image" src={offer.photos[0].src} width="260" height="200" title={offer.photos[0].title} alt="Place image" />
       </Link>
@@ -44,6 +46,7 @@ const OfferCard = (props) => {
 
 OfferCard.propTypes = {
   offer: offerPropType,
+  classPrefix: PropTypes.string.isRequired,
   onHover: PropTypes.func.isRequired
 };
 

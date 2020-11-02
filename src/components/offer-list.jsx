@@ -13,9 +13,9 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    return <div className="cities__places-list places__list tabs__content">
+    return <div className={`${this.props.listClassPrefix} places__list tabs__content`}>
       {this.props.offers.map((offer) => {
-        return <OfferCard key={offer.id} offer={offer}
+        return <OfferCard key={offer.id} offer={offer} classPrefix={this.props.cardClassPrefix}
           onHover={(event) => this.setState({activeOffer: event.type === `mouseenter` ? offer : null})}/>;
       })}
     </div>;
@@ -23,7 +23,9 @@ class OfferList extends PureComponent {
 }
 
 OfferList.propTypes = {
-  offers: PropTypes.arrayOf(offerPropType).isRequired
+  offers: PropTypes.arrayOf(offerPropType).isRequired,
+  listClassPrefix: PropTypes.string.isRequired,
+  cardClassPrefix: PropTypes.string.isRequired
 };
 
 export default OfferList;
