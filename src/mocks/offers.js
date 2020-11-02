@@ -8,6 +8,12 @@ let offers = generate(4, (elem, index) => {
   return {
     id: index + 1,
     city: `Amsterdam`,
+    location: faker.random.arrayElement([
+      [52.3909553943508, 4.85309666406198],
+      [52.369553943508, 4.85309666406198],
+      [52.3909553943508, 4.929309666406198],
+      [52.3809553943508, 4.939309666406198]
+    ]),
     mark: faker.random.arrayElement([`Premium`, ``]),
     photos: generate(6, () => {
       return {

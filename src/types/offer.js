@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 
 export default PropTypes.shape({
   city: PropTypes.string.isRequired,
+  location: PropTypes.arrayOf(PropTypes.number).isRequired,
   id: PropTypes.number.isRequired,
   mark: PropTypes.string,
   photos: PropTypes.arrayOf(
@@ -27,10 +28,10 @@ export default PropTypes.shape({
       PropTypes.shape({
         time: PropTypes.string.isRequired,
         rating: PropTypes.number.isRequired,
-        user: {
+        user: PropTypes.shape({
           name: PropTypes.string.isRequired,
           avatar: PropTypes.string.isRequired
-        },
+        }),
         text: PropTypes.string.isRequired
       })
   ).isRequired
