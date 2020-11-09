@@ -20,6 +20,17 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         },
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|jpg)$/,
+        use: {
+          // inline base64 URLs for <=8k images, direct URLs for the rest
+          loader: 'url-loader?limit=8192'
+        }
       }
     ],
   },
