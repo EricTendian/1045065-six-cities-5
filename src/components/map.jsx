@@ -9,6 +9,7 @@ class Map extends PureComponent {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
     const city = [52.38333, 4.9];
     const icon = leaflet.icon({
