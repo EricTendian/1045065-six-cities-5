@@ -36,6 +36,7 @@ let offers = generate(4, (elem, index) => {
     description: faker.lorem.paragraph(),
     reviews: generate(faker.random.number({min: 0, max: 10}), () => {
       return {
+        id: faker.random.number({min: 1, max: 1000}),
         time: faker.date.past().toDateString(),
         rating: faker.random.number({min: 1, max: 5}),
         user: {
